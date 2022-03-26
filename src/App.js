@@ -1,76 +1,87 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {Routes,Route} from "react-router-dom";
+import {Accueil} from './components/Accueil'
+import { useState } from 'react';
+import {Description} from './components/Description'
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-       <form className="row g-3 needs-validation" novalidate>
-  <div className="col-md-4">
-    <label for="validationCustom01" className="form-label">First name</label>
-    <input type="text" className="form-control" id="validationCustom01" value="Mark" required />
-    <div className="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div className="col-md-4">
-    <label for="validationCustom02"className="form-label">Last name</label>
-    <input type="text" className="form-control" id="validationCustom02" value="Otto" required />
-    <div className="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div className="col-md-4">
-    <label for="validationCustomUsername"className="form-label">Username</label>
-    <div className="input-group has-validation">
-      <span className="input-group-text" id="inputGroupPrepend">@</span>
-      <input type="text" className="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required />
-      <div className="invalid-feedback">
-        Please choose a username.
-      </div>
-    </div>
-  </div>
-  <div className="col-md-6">
-    <label for="validationCustom03" className="form-label">City</label>
-    <input type="text"className="form-control" id="validationCustom03" required/>
-    <div className="invalid-feedback">
-      Please provide a valid city.
-    </div>
-  </div>
-  <div className="col-md-3">
-    <label for="validationCustom04" className="form-label">State</label>
-    <select className="form-select" id="validationCustom04" required>
-      <option selected disabled value="">Choose...</option>
-      <option>...</option>
-    </select>
-    <div className="invalid-feedback">
-      Please select a valid state.
-    </div>
-  </div>
-  <div className="col-md-3">
-    <label for="validationCustom05" className="form-label">Zip</label>
-    <input type="text" className="form-control" id="validationCustom05" required />
-    <div className="invalid-feedback">
-      Please provide a valid zip.
-    </div>
-  </div>
-  <div className="col-12">
-    <div className="form-check">
-      <input className="form-check-input" type="checkbox" value="" id="invalidCheck" required/>
-      <label className="form-check-label" for="invalidCheck">
-        Agree to terms and conditions
-      </label>
-      <div className="invalid-feedback">
-        You must agree before submitting.
-      </div>
-    </div>
-  </div>
-  <div className="col-12">
-    <button className="btn btn-primary" type="submit">Submit form</button>
-  </div>
-</form>
 
-      </header>
+  let [users, setUsers] = useState(
+        
+    [
+        {
+            id :1,
+            img:"le dernier des templiers.jpg",
+            synopsys:`Behman, un chevalier, revient en Europe et la trouve ravagée par la peste noire.
+                      "Un cardinal sur le point de mourir ordonne à Behman et son ami Felson d'emmener une femme accusée de sorcellerie
+                      "dans une abbaye où les moines détruiront ses pouvoirs et mettront fin à la peste.`,
+            video:"https://www.youtube.com/embed/lGkPW8KLv34",
+            title:"le dernier des templiers"
+
+        },
+        
+        {
+          id :2,
+          img:"chaos of the dead.jpg",
+          synopsys:`Aidan se barricade dans son appartement car dehors c'est le chaos. 
+          Des zombies ont envahi les rues. Dans sa cour, le jeune homme découvre une fille qui est également prise au piège.
+          Ils doivent maintenant trouver un moyen de s'en sortir... Réalisateur : Johnny Martin Cast : Tyler Posey, Summer Spiro,
+          Donald Sutherland Genre Thriller, Epouvante Horreur Film complet en français`,
+          video:"https://www.youtube.com/embed/qS3pM1B3w2Y" ,
+          title:"chaos of the dead"
+        },
+        
+        {
+          id :3,
+          img:"rebellion.jpg",
+          synopsys:`Un policier se fait volontairement incarcérer dans une prison pour infiltrer un gang...`,
+          video:"https://www.youtube.com/embed/q1OyVDrxhaY",
+          title:"rebellion"
+
+        },
+        {
+          id :4,
+          img:"pirate des araibes 5.jpg",
+          synopsys:`Jack Sparrow est confronté au redoutable Capitaine Salazar et ses pirates meurtriers;
+            Jack Sparrow se retrouve dans le Triangle des Bermudes à la recherche du légendaire Trident de Poséidon,
+            un puissant artéfact qui donne un pouvoir absolu sur les mers.`,
+          video:"https://www.youtube.com/embed/wSL0X0IKCsM",
+          title:"pirate des araibes 5" 
+
+        },
+        {
+          id :5,
+          img:"zeus.jpg",
+          synopsys:`la mythologie grecque`,
+          video:"https://www.youtube.com/embed/VkYM1okCFBU", 
+          title:"la mythologie grecque"
+        },
+        {
+          id :6,
+          img:"planete.jpg",
+          synopsys:`Domentiare sur notre planete`,
+          video:"https://www.youtube.com/embed/VMuI4S6e_yw",
+          title:"Il etait une fois notre planete"
+
+        },
+      ]
+        )
+
+  return (
+    < div className='Appp'>
+
+    
+
+
+      <Routes>
+        <Route path='/'     element={<Accueil users={users}/>} />
+        <Route path='description/:id' element={<Description  users={users}  />} />
+        
+      </Routes>
+    
     </div>
   );
 }
